@@ -6,10 +6,15 @@ namespace API\Advertisers;
  * Class Tripster
  * @package API\Advertisers
  *
- * Класс рекламодателя Tripster
+ * Класс для работы с API рекламодателя Tripster
  */
 class Tripster extends Advertiser{
 
+    /**
+     * Tripster constructor.
+     * @param $resource ресурс где будем искать по параметрам(Например 'experiences' - ресурс с экскурсиями)
+     * @param array $parameters параметры для выборки и сортировки в определенном ресурсе
+     */
     function __construct($resource, array $parameters = array()) {
         self::init();
         

@@ -5,12 +5,12 @@ namespace API\Advertisers;
  * Class Advertiser
  * @package API\Advertisers
  *
- * Общий шаблон для классов рекламодателей
+ * Общий шаблон для работы с Api рекламодателей
  */
 abstract class Advertiser{
-    private $request;
+    private $request; //Поле для хранение строки для запроса к Api рекламодателя
     private $classname;
-    private $config;
+    private $config; //Поле хранения конфигурации из config.php
 
     protected function init() {
         $this->classname = (new \ReflectionClass(get_class($this)))->getShortName();

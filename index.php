@@ -11,5 +11,7 @@
     $sputnikv8Api = new Sputnik8('products');
     $curlTripsterSender = new CurlSender($tripsterApi);
     $curlSputnikV8Sender = new CurlSender($sputnikv8Api);
-    $arr =  $curlTripsterSender->get();
-    var_dump($arr);
+    $arr1 =  $curlTripsterSender->get();
+    $arr2 =  $curlSputnikV8Sender->get();
+    var_dump($arr1);
+    var_dump($arr2);

@@ -5,16 +5,24 @@ namespace API\Senders;
  * Class CurlSender
  * @package API\Senders
  *
- * Класс предназначе для отправки запроса с помощью curl
+ * Класс предназначен для отправки запроса с помощью curl
  */
 class CurlSender {
-    private $advertiser; //поле хранящее в данные по рекламодателю
-  
+    private $advertiser; //поле хранящее определенного рекламодателя
+
+    /**
+     * CurlSender constructor.
+     * @param $advertiser рекламодатель
+     */
     public function __construct($advertiser) {
         $this->advertiser = $advertiser;
     }
-  
-    // GET-запрос на получение данных от рекламодателя
+
+    /**
+     * Функция для получения данных от рекламодателей
+     *
+     * @return mixed возвращает дессириализованный json ответ от Api рекламодателя
+     */
     public function get() {
         $curl = curl_init($this->advertiser->getRequestString());
 
