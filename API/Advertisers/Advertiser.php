@@ -21,6 +21,14 @@ abstract class Advertiser{
         return $this->config;
     }
 
+    public function getToken() {
+        return $this->config['token'];
+    }
+
+    public function getHeaderAuth() {
+        return $this->config['headerAuth'];
+    }
+
     public function getRequestString() {
         return $this->request;
     }

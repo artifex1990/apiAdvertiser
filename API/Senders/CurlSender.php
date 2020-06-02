@@ -20,10 +20,10 @@ class CurlSender {
 
         $curl_option = [CURLOPT_RETURNTRANSFER => true];
 
-        if($this->advertiser->getConfigAdvertiser()['headerAuth']) {
+        if($this->advertiser->getHeaderAuth()) {
             $curl_option[] = [
                 CURLOPT_HTTPHEADER => [
-                    'Authorization: Token ' . $this->advertiser->getConfigAdvertiser()['token'],
+                    'Authorization: Token ' . $this->advertiser->getToken(),
                     'Content-Type: application/json'
                 ]
             ];
