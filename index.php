@@ -1,22 +1,16 @@
 <?
     require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
     $APPLICATION->SetTitle("API получения путевок");
-?>
-
-<?
-    //use Bitrix\Main\UI\Extension;
+    
     use Bitrix\Main\Page\Asset;
     Asset::getInstance()->addJs('https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js');
-    //Extension::load('ui.bootstrap4');
-
     Asset::getInstance()->addCss('https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css');
     Asset::getInstance()->addCss('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css');
     Asset::getInstance()->addJs('https://code.jquery.com/jquery-3.5.1.slim.min.js');
     Asset::getInstance()->addJs('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js');
     Asset::getInstance()->addJs('https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js');
-    Asset::getInstance()->addJs($templateFolder . 'js/script.js');
-
 ?>
+
     <div class="form-group">
         <label for="country">Страна:</label>
         <select class="selectpicker" id="country" data-live-search="true" title="Страна">
