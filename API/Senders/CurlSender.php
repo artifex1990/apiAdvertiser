@@ -9,6 +9,7 @@ namespace API\Senders;
  */
 class CurlSender {
     private $advertiser; //поле хранящее определенного рекламодателя
+    private $curl_option;
 
     /**
      * CurlSender constructor.
@@ -16,6 +17,17 @@ class CurlSender {
      */
     public function __construct($advertiser) {
         $this->advertiser = $advertiser;
+
+        $this->curl_option = [CURLOPT_RETURNTRANSFER => true];
+
+        if($this->advertiser->getHeaderAuth()) {
+            $this->curl_option[] = [
+                CURLOPT_HTTPHEADER => [
+                    'Authorization: Token ' . $this->advertiser->getToken(),
+                    'Content-Type: application/json'
+                ]
+            ];
+        }
     }
 
     /**
@@ -25,19 +37,8 @@ class CurlSender {
      */
     public function get() {
         $curl = curl_init($this->advertiser->getRequestString());
-
-        $curl_option = [CURLOPT_RETURNTRANSFER => true];
-
-        if($this->advertiser->getHeaderAuth()) {
-            $curl_option[] = [
-                CURLOPT_HTTPHEADER => [
-                    'Authorization: Token ' . $this->advertiser->getToken(),
-                    'Content-Type: application/json'
-                ]
-            ];
-        }
         
-        curl_setopt_array($curl, $curl_option);
+        curl_setopt_array($curl, $this->curl_option);
   
         // Получаем данные и закрывааем соединение
         $results = curl_exec($curl);
